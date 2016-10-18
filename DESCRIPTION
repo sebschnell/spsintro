@@ -1,0 +1,14 @@
+Package: spsintro
+Type: Package
+Title: Example code and functions to support the NOVA course 'Introduction ot Scientific Programming and Simulation'
+Version: 0.1.0
+Author: Sebastian Schnell
+Maintainer: <Sebastian.Schnell@uni-goettingen.de>
+Description: The package provides code snippets and examples used in the NOVA course 'Introduction ot Scientific Programming and Simulation'.
+License: none
+LazyData: TRUE
+SystemRequirements: C++11
+Imports:
+    Rcpp (>= 0.12.7)
+LinkingTo: Rcpp
+RoxygenNote: 5.0.1
