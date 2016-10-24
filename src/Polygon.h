@@ -38,7 +38,7 @@ class Triangle : Polygon {
     Triangle() = default;
     Triangle(const std::vector<double> &rx, const std::vector<double> &ry,
               double b, double h) :
-      Polygon(rx, ry), base(w), height(h) {}
+      Polygon(rx, ry), base(b), height(h) {}
     double get_b() const {return base;}
     double get_h() const {return height;}
     double area() const override {return base*height/2;};
