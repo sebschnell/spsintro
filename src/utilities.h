@@ -4,4 +4,5 @@
 #include <vector>
 
 double calc_poly_area(const std::vector<double> &x,const std::vector<double> &y);
+
 #endif

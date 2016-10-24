@@ -186,11 +186,18 @@ round_cpp <- function(x) {
     .Call('spsintro_round_cpp', PACKAGE = 'spsintro', x)
 }
 
-#' Test Polygon classes
+#' Test Polygon class
 #' @return Return nothing
 #' @export
-test <- function() {
-    invisible(.Call('spsintro_test', PACKAGE = 'spsintro'))
+use_polygon_class <- function() {
+    invisible(.Call('spsintro_use_polygon_class', PACKAGE = 'spsintro'))
+}
+
+#' Demonstrates inheritance and dynamic binding
+#' @return Return nothing
+#' @export
+inheritance <- function() {
+    invisible(.Call('spsintro_inheritance', PACKAGE = 'spsintro'))
 }
 
 #' Return the area of an irregular polygon

@@ -347,15 +347,36 @@ double round_cpp(double x) {
   return round(x);
 }
 
-//' Test Polygon classes
+//' Test Polygon class
 //' @return Return nothing
 //' @export
 // [[Rcpp::export]]
-void test() {
-  std::vector<double> x{0, 1, 1, 0};
-  std::vector<double> y{0, 0, 1, 1};
-  Rectangle rect(x, y, 1, 1);
-  Rcpp::Rcout << rect.area() << std::endl;
+void use_polygon_class() {
+  std::vector<double> x{0, 6, 6, 0};
+  std::vector<double> y{0, 0, 4, 4};
+  Rectangle rect(x, y, 6, 4);
+  Rcpp::Rcout << "height: " << rect.get_h() << std::endl;
+  Rcpp::Rcout << "width " << rect.get_w() << std::endl;
+  Rcpp::Rcout << "area: " << rect.area() << std::endl;
 }
 
+//' Demonstrates inheritance and dynamic binding
+//' @return Return nothing
+//' @export
+// [[Rcpp::export]]
+void inheritance() {
+  std::vector<double> x_poly{0, 4, 4, 2, 0};
+  std::vector<double> y_poly{0, 0, 4, 6, 4};
+  std::vector<double> x_rect{0, 4, 4, 0};
+  std::vector<double> y_rect{0, 0, 4, 4};
+  std::vector<double> x_tri{0, 4, 2};
+  std::vector<double> y_tri{4, 4, 6};
 
+  Polygon poly(x_poly, y_poly);
+  Rectangle rect(x_rect, y_rect, 4, 4);
+  Triangle tri(x_tri, y_tri, 4, 2);
+
+  Rcpp::Rcout << "Area poly: " << poly.area() << std::endl;
+  Rcpp::Rcout << "Area rect: " << rect.area() << std::endl;
+  Rcpp::Rcout << "Area tri: " << tri.area() << std::endl;
+}

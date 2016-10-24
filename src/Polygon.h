@@ -9,10 +9,9 @@ class Polygon {
     Polygon() = default;
     Polygon(const std::vector<double> &rx, const std::vector<double> &ry) : x(rx), y(ry) {}
     // function members
-    std::vector<double> get_x() const {return x;}
-    std::vector<double> get_y() const {return y;}
-    virtual double area() const
-      { return calc_poly_area(x, y); }
+    std::vector<double> get_x() const { return x; }
+    std::vector<double> get_y() const { return y; }
+    virtual double area() const { return calc_poly_area(x, y); }
     virtual ~Polygon() = default; // dynamic binding for the destructor
   private:
     // data members
@@ -28,7 +27,7 @@ class Rectangle : Polygon {
       Polygon(rx, ry), width(w), height(h) {}
     double get_w() const {return width;}
     double get_h() const {return height;}
-    double area() const override {return width*height;};
+    double area() const override {return width*height;}
   private:
     double width = 0.0;
     double height = 0.0;
@@ -38,7 +37,7 @@ class Triangle : Polygon {
   public:
     Triangle() = default;
     Triangle(const std::vector<double> &rx, const std::vector<double> &ry,
-              double w, double h) :
+              double b, double h) :
       Polygon(rx, ry), base(w), height(h) {}
     double get_b() const {return base;}
     double get_h() const {return height;}

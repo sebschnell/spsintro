@@ -246,12 +246,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// test
-void test();
-RcppExport SEXP spsintro_test() {
+// use_polygon_class
+void use_polygon_class();
+RcppExport SEXP spsintro_use_polygon_class() {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
-    test();
+    use_polygon_class();
+    return R_NilValue;
+END_RCPP
+}
+// inheritance
+void inheritance();
+RcppExport SEXP spsintro_inheritance() {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    inheritance();
     return R_NilValue;
 END_RCPP
 }
