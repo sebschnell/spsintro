@@ -460,6 +460,7 @@ void inheritance() {
 //' Naive implementation of bubble sort algorithm
 //' @param x A numeric vector which values are sorted in increasing order
 //' @return A numeric vector with values sorted in increasing order
+//' @export
 // [[Rcpp::export]]
 std::vector<double> bubble_sort (std::vector<double> &x) {
   double temp = 0.0;

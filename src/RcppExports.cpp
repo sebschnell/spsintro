@@ -371,3 +371,46 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+
+static const R_CallMethodDef CallEntries[] = {
+    {"spsintro_gen_fib_cpp", (DL_FUNC) &spsintro_gen_fib_cpp, 1},
+    {"spsintro_find_max", (DL_FUNC) &spsintro_find_max, 1},
+    {"spsintro_calc_dist", (DL_FUNC) &spsintro_calc_dist, 3},
+    {"spsintro_find_knn", (DL_FUNC) &spsintro_find_knn, 4},
+    {"spsintro_show_type_ranges", (DL_FUNC) &spsintro_show_type_ranges, 0},
+    {"spsintro_type_conversions", (DL_FUNC) &spsintro_type_conversions, 0},
+    {"spsintro_mix_signed_unsigned", (DL_FUNC) &spsintro_mix_signed_unsigned, 0},
+    {"spsintro_illustrate_scope", (DL_FUNC) &spsintro_illustrate_scope, 0},
+    {"spsintro_show_references", (DL_FUNC) &spsintro_show_references, 0},
+    {"spsintro_show_pointers", (DL_FUNC) &spsintro_show_pointers, 0},
+    {"spsintro_create_tree_struct", (DL_FUNC) &spsintro_create_tree_struct, 4},
+    {"spsintro_to_upper_range_for", (DL_FUNC) &spsintro_to_upper_range_for, 1},
+    {"spsintro_to_upper_subscript", (DL_FUNC) &spsintro_to_upper_subscript, 1},
+    {"spsintro_add_elem", (DL_FUNC) &spsintro_add_elem, 1},
+    {"spsintro_sum_elem", (DL_FUNC) &spsintro_sum_elem, 1},
+    {"spsintro_squ_elem", (DL_FUNC) &spsintro_squ_elem, 1},
+    {"spsintro_squ_elem_it", (DL_FUNC) &spsintro_squ_elem_it, 1},
+    {"spsintro_arr_access", (DL_FUNC) &spsintro_arr_access, 0},
+    {"spsintro_ret_rem", (DL_FUNC) &spsintro_ret_rem, 2},
+    {"spsintro_dem_cond", (DL_FUNC) &spsintro_dem_cond, 1},
+    {"spsintro_dem_if_else", (DL_FUNC) &spsintro_dem_if_else, 1},
+    {"spsintro_find_first_neg", (DL_FUNC) &spsintro_find_first_neg, 1},
+    {"spsintro_find_first_neg_for", (DL_FUNC) &spsintro_find_first_neg_for, 1},
+    {"spsintro_find_first_neg_rf", (DL_FUNC) &spsintro_find_first_neg_rf, 1},
+    {"spsintro_find_first_neg_dw", (DL_FUNC) &spsintro_find_first_neg_dw, 1},
+    {"spsintro_round_cpp", (DL_FUNC) &spsintro_round_cpp, 1},
+    {"spsintro_use_polygon_class", (DL_FUNC) &spsintro_use_polygon_class, 0},
+    {"spsintro_inheritance", (DL_FUNC) &spsintro_inheritance, 0},
+    {"spsintro_bubble_sort", (DL_FUNC) &spsintro_bubble_sort, 1},
+    {"spsintro_fact_cpp", (DL_FUNC) &spsintro_fact_cpp, 1},
+    {"spsintro_fact_rec_cpp", (DL_FUNC) &spsintro_fact_rec_cpp, 1},
+    {"spsintro_use_matrix", (DL_FUNC) &spsintro_use_matrix, 1},
+    {"spsintro_use_list", (DL_FUNC) &spsintro_use_list, 2},
+    {"spsintro_calc_poly_area", (DL_FUNC) &spsintro_calc_poly_area, 2},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_spsintro(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}

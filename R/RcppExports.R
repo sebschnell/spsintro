@@ -236,6 +236,7 @@ inheritance <- function() {
 #' Naive implementation of bubble sort algorithm
 #' @param x A numeric vector which values are sorted in increasing order
 #' @return A numeric vector with values sorted in increasing order
+#' @export
 bubble_sort <- function(x) {
     .Call('spsintro_bubble_sort', PACKAGE = 'spsintro', x)
 }

@@ -3,6 +3,7 @@
 export(add_elem)
 export(add_x)
 export(arr_access)
+export(bubble_sort)
 export(calc_dist)
 export(calc_poly_area)
 export(create_tree_struct)
