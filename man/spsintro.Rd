@@ -9,4 +9,3 @@
 Code snippets and functions used for 'Introduction to Scientific Programming
 and Simulation' course
 }
-

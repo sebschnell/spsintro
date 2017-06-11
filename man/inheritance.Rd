@@ -12,4 +12,3 @@ Return nothing
 \description{
 Demonstrates inheritance and dynamic binding
 }
-

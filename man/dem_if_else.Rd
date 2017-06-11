@@ -15,4 +15,3 @@ A diameter class
 \description{
 An if-else example
 }
-

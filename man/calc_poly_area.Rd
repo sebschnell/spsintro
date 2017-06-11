@@ -17,4 +17,3 @@ The area of the polygon
 \description{
 Return the area of an irregular polygon
 }
-

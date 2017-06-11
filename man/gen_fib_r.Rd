@@ -19,4 +19,3 @@ A function to calculate fibonacci numbers
 n <- 20;
 gen_fib_r(n);
 }
-

@@ -15,4 +15,3 @@ Index of the first negative value
 \description{
 Find first negative element in a vector and return its position
 }
-

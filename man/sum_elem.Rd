@@ -15,4 +15,3 @@ A double containing the sum of all elements of \code{v}
 \description{
 Sums all elements in a vector
 }
-

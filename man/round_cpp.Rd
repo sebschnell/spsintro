@@ -19,4 +19,3 @@ Demonstrate rounding in C++
 R's built-in \code{round()} function shows a
 different behaviour than the \code{round()} function of C++
 }
-

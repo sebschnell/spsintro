@@ -12,4 +12,3 @@ Nothing is returned, only printing to the console
 \description{
 Array element access example
 }
-

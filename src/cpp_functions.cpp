@@ -1,11 +1,16 @@
-#include <Rcpp.h>
+#include <RcppEigen.h>
 // Use quotation marks to search for header files that are located in the same
 // directory as the file containing the directive
 #include "Tree.h"
 #include "Polygon.h"
 #include "utilities.h"
 #include <vector> // Brackets for implementation dependent search paths
+#include <algorithm>
+#include <utility>
 // [[Rcpp::plugins(cpp11)]]
+// [[Rcpp::depends(RcppEigen)]]
+
+
 
 //' A function to calculate fibonacci numbers (implemented in C++)
 //'
@@ -36,6 +41,77 @@ std::vector<double> gen_fib_cpp(const int n) {
     }
     return res;
   }
+}
+
+//' Find the maximum from a list of values
+//'
+//' @param x A vector holding a number of values
+//' @return The largest number in \code{x}
+//' @export
+// [[Rcpp::export]]
+double find_max(const std::vector<double> &x) {
+  double temp = 0.0;
+  for (unsigned i = 0; i != x.size(); ++i) {
+    if (x[i] > temp) temp = x[i];
+  }
+  return(temp);
+}
+
+//' Calculate the distance between two observations based on a set of auxiliary
+//' variables
+//'
+//' @param x_i Vector of auxiliary variables for observation \code{i}
+//' @param x_j Vector of auxiliary variables for observation \code{j}
+//' @param M A square matrix. When \code{M} is the identity matrix the
+//' Euclidean distance results.
+//' @export
+// [[Rcpp::export]]
+double calc_dist(const Eigen::VectorXd & x_i,
+                 const Eigen::VectorXd & x_j,
+                 const Eigen::MatrixXd & M) {
+  return sqrt((x_i - x_j).transpose()*M*(x_i - x_j));
+}
+
+
+//' Search nearest neighbours
+//'
+//' @param X Matrix with auxiliary variables of the reference set. Rows are the
+//' single observations and variables are stored in columns.
+//' @param M A square matrix defining the distance measure. When \code{M} is
+//' the identity matrix, the Euclidean distance results.
+//' @param k The number of neighbours
+//' @export
+// [[Rcpp::export]]
+Rcpp::List find_knn(const Eigen::MatrixXd & Y,
+                    const Eigen::MatrixXd & X,
+                    const Eigen::MatrixXd & M,
+                    const unsigned & k) {
+  Eigen::MatrixXi NN(Y.rows(), k);
+  Eigen::MatrixXd D(Y.rows(), k);
+
+  std::vector<std::pair<double, unsigned> > d;
+  d.reserve(Y.rows());
+  unsigned idx;
+  for (unsigned i = 0; i < Y.rows(); ++i) {
+    d.clear();
+    for (unsigned j = 0; j < X.rows(); ++j) {
+      ++idx;
+      if (i != j) {
+        d.push_back({calc_dist(Y.row(i), X.row(j), M), (j + 1)});
+      }
+    }
+    std::partial_sort(d.begin(), d.begin() + k, d.end());
+    for (unsigned k_i = 0; k_i < k; ++k_i) {
+      NN(i, k_i) = d[k_i].second;
+      D(i, k_i) = d[k_i].first;
+
+    }
+  }
+  int n_var = Y.cols();
+  return Rcpp::List::create (Rcpp::Named("nn") = NN,
+                             Rcpp::Named("dist") = D,
+                             Rcpp::Named("k") = k,
+                             Rcpp::Named("n_var") = n_var);
 }
 
 //' Print C++ data type ranges to the R-console
@@ -380,3 +456,24 @@ void inheritance() {
   Rcpp::Rcout << "Area rect: " << rect.area() << std::endl;
   Rcpp::Rcout << "Area tri: " << tri.area() << std::endl;
 }
+
+//' Naive implementation of bubble sort algorithm
+//' @param x A numeric vector which values are sorted in increasing order
+//' @return A numeric vector with values sorted in increasing order
+// [[Rcpp::export]]
+std::vector<double> bubble_sort (std::vector<double> &x) {
+  double temp = 0.0;
+  for (unsigned i = 0; i != x.size(); ++i) {
+    for (unsigned j = 0; j != x.size() - 1; ++j) {
+      if (x[j] > x[j + 1]) {
+        temp = x[j];
+        x[j] = x[j + 1];
+        x[j + 1] = temp;
+      }
+    }
+  }
+  return(x);
+}
+
+
+

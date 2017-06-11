@@ -13,6 +13,39 @@ gen_fib_cpp <- function(n) {
     .Call('spsintro_gen_fib_cpp', PACKAGE = 'spsintro', n)
 }
 
+#' Find the maximum from a list of values
+#'
+#' @param x A vector holding a number of values
+#' @return The largest number in \code{x}
+#' @export
+find_max <- function(x) {
+    .Call('spsintro_find_max', PACKAGE = 'spsintro', x)
+}
+
+#' Calculate the distance between two observations based on a set of auxiliary
+#' variables
+#'
+#' @param x_i Vector of auxiliary variables for observation \code{i}
+#' @param x_j Vector of auxiliary variables for observation \code{j}
+#' @param M A square matrix. When \code{M} is the identity matrix the
+#' Euclidean distance results.
+#' @export
+calc_dist <- function(x_i, x_j, M) {
+    .Call('spsintro_calc_dist', PACKAGE = 'spsintro', x_i, x_j, M)
+}
+
+#' Search nearest neighbours
+#'
+#' @param X Matrix with auxiliary variables of the reference set. Rows are the
+#' single observations and variables are stored in columns.
+#' @param M A square matrix defining the distance measure. When \code{M} is
+#' the identity matrix, the Euclidean distance results.
+#' @param k The number of neighbours
+#' @export
+find_knn <- function(Y, X, M, k) {
+    .Call('spsintro_find_knn', PACKAGE = 'spsintro', Y, X, M, k)
+}
+
 #' Print C++ data type ranges to the R-console
 #' @return No return values, simply printing to the R-console
 #' @export
@@ -198,6 +231,70 @@ use_polygon_class <- function() {
 #' @export
 inheritance <- function() {
     invisible(.Call('spsintro_inheritance', PACKAGE = 'spsintro'))
+}
+
+#' Naive implementation of bubble sort algorithm
+#' @param x A numeric vector which values are sorted in increasing order
+#' @return A numeric vector with values sorted in increasing order
+bubble_sort <- function(x) {
+    .Call('spsintro_bubble_sort', PACKAGE = 'spsintro', x)
+}
+
+#'Calculate the factorial of an integer number
+#'
+#'Meant to use only for teaching purposes not for replacing the built-in
+#'function \code{factorial()}.
+#'
+#'@param n An integer number
+#'
+#'@details A C++ implementation using a \code{for} loop.
+#'
+#'@return The factorial of \code{n}
+#'@export
+#'
+#' @examples
+#'    fact_cpp(10);
+fact_cpp <- function(n) {
+    .Call('spsintro_fact_cpp', PACKAGE = 'spsintro', n)
+}
+
+#'Calculate the factorial of an integer number
+#'
+#'Meant to use only for teaching purposes not for replacing the built-in
+#'function \code{factorial()}.
+#'
+#'@param n An integer number
+#'
+#'@details A C++ implementation using recursion.
+#'
+#'@return The factorial of \code{n}
+#'@export
+#'
+#' @examples
+#'    fact_cpp(10);
+fact_rec_cpp <- function(n) {
+    .Call('spsintro_fact_rec_cpp', PACKAGE = 'spsintro', n)
+}
+
+#'Demonstrate the use of a numeric matrix object from the Rcpp package
+#'
+#'@param x A numeric matrix
+#'
+#'@return A new matrix with the same dimensions as \code{x} filled with zeroes
+#'@export
+use_matrix <- function(x) {
+    .Call('spsintro_use_matrix', PACKAGE = 'spsintro', x)
+}
+
+#'Demonstrate the use of a list object from the Rcpp package
+#'
+#'@param x A numeric matrix
+#'@param y A numeric vector
+#'
+#'@return A named list containing both \code{x} and \code{y}.
+#'@export
+use_list <- function(x, y) {
+    .Call('spsintro_use_list', PACKAGE = 'spsintro', x, y)
 }
 
 #' Return the area of an irregular polygon

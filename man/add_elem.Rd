@@ -15,4 +15,3 @@ A vector of size \code{n}
 \description{
 Add elements to a vector
 }
-

@@ -1,6 +1,21 @@
 library('Rcpp');
 setwd("C:/Users/Schnell/Documents/Courses/introduction_programming_simulation");
 
+
+#'Calculate the factorial of an integer number
+#'
+#'Meant to use only for teaching purposes not for replacing the built-in
+#'function \code{factorial()}.
+#'
+#'@param n An integer number
+#'
+#'@details Internally a \code{for} loop is used.
+#'
+#'@return The factorial of \code{n}
+#'@export
+#'
+#' @examples
+#'    fact_r(10);
 fact_r <- function(n) {
   f <- 1;
   if (n < 0) {
@@ -15,6 +30,20 @@ fact_r <- function(n) {
   }
 }
 
+#'Calculate the factorial of an integer number
+#'
+#'Meant to use only for teaching purposes not for replacing the built-in
+#'function \code{factorial()}.
+#'
+#'@param n An integer number
+#'
+#'@details This function works using recursion (the function calls itself).
+#'
+#'@return The factorial of \code{n}
+#'@export
+#'
+#' @examples
+#'    fact_rec_r(10);
 fact_rec_r <- function(n) {
   if (n < 0) {
     stop("No factorial for negative numbers");
@@ -24,19 +53,3 @@ fact_rec_r <- function(n) {
     return(n*Recall(n - 1));
   }
 }
-
-sourceCpp(file = "R/factorial_example1.cpp");
-
-x <- 10;
-fact_r(x);
-fact_rec_r(x);
-fact_cpp(-1);
-fact_rec_cpp(-1);
-
-library(microbenchmark);
-microbenchmark(fact_r(x),
-               fact_rec_r(x),
-               fact_cpp(x),
-               fact_rec_cpp(x),
-               factorial(x));
-

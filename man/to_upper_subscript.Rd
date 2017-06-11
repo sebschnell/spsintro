@@ -15,4 +15,3 @@ The same string as \code{str} but with upper case letters
 \description{
 Convert all characters in a string to upper case
 }
-

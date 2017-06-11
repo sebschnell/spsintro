@@ -1,6 +1,20 @@
 #include <Rcpp.h>
 // [[Rcpp::plugins(cpp11)]]
 
+//'Calculate the factorial of an integer number
+//'
+//'Meant to use only for teaching purposes not for replacing the built-in
+//'function \code{factorial()}.
+//'
+//'@param n An integer number
+//'
+//'@details A C++ implementation using a \code{for} loop.
+//'
+//'@return The factorial of \code{n}
+//'@export
+//'
+//' @examples
+//'    fact_cpp(10);
 // [[Rcpp::export]]
 double fact_cpp(double n){
   double f = 1;
@@ -16,6 +30,20 @@ double fact_cpp(double n){
   }
 }
 
+//'Calculate the factorial of an integer number
+//'
+//'Meant to use only for teaching purposes not for replacing the built-in
+//'function \code{factorial()}.
+//'
+//'@param n An integer number
+//'
+//'@details A C++ implementation using recursion.
+//'
+//'@return The factorial of \code{n}
+//'@export
+//'
+//' @examples
+//'    fact_cpp(10);
 // [[Rcpp::export]]
 double fact_rec_cpp(double n){
   if (n < 0) {

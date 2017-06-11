@@ -12,4 +12,3 @@ No return values, simply printing to the R-console
 \description{
 Show effect of mixing signed and unsigned types
 }
-

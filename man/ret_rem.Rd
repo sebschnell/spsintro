@@ -12,4 +12,3 @@ The remainder of an integer division
 \description{
 Return remainder
 }
-

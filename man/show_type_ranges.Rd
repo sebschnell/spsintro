@@ -12,4 +12,3 @@ No return values, simply printing to the R-console
 \description{
 Print C++ data type ranges to the R-console
 }
-

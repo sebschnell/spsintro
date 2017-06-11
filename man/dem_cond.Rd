@@ -15,4 +15,3 @@ Nothing to return, just printing to the console
 \description{
 Conditional operator
 }
-

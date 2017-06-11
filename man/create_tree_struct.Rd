@@ -21,4 +21,3 @@ No return values, simply printing to the R-console
 \description{
 Illustrates definition and usage of a simple class with only data members
 }
-

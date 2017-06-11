@@ -12,4 +12,3 @@ Return nothing
 \description{
 Test Polygon class
 }
-
