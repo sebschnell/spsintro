@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{use_list}
 \alias{use_list}
-\title{Demonstrate the use of a list object from the Rcpp package}
+\title{Example function to demonstrate Rcpp's list class}
 \usage{
 use_list(x, y)
 }
@@ -12,8 +12,8 @@ use_list(x, y)
 \item{y}{A numeric vector}
 }
 \value{
-A named list containing both \code{x} and \code{y}.
+A list with \code{x} and \code{y} as its elements
 }
 \description{
-Demonstrate the use of a list object from the Rcpp package
+Example function to demonstrate Rcpp's list class
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{fact_rec_cpp}
 \alias{fact_rec_cpp}
-\title{Calculate the factorial of an integer number}
+\title{Calculate the factorial of an integer number (recursive version)}
 \usage{
 fact_rec_cpp(n)
 }
@@ -20,5 +20,5 @@ function \code{factorial()}.
 A C++ implementation using recursion.
 }
 \examples{
-   fact_cpp(10);
+   fact_rec_cpp(10);
 }

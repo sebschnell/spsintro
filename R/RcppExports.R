@@ -22,6 +22,42 @@ find_max <- function(x) {
     .Call('spsintro_find_max', PACKAGE = 'spsintro', x)
 }
 
+#'Calculate the factorial of an integer number (loop version)
+#'
+#'Meant to use only for teaching purposes not for replacing the built-in
+#'function \code{factorial()}.
+#'
+#'@param n An integer number
+#'
+#'@details A C++ implementation using a \code{for} loop.
+#'
+#'@return The factorial of \code{n}
+#'@export
+#'
+#'@examples
+#'    fact_cpp(10);
+fact_cpp <- function(n) {
+    .Call('spsintro_fact_cpp', PACKAGE = 'spsintro', n)
+}
+
+#'Calculate the factorial of an integer number (recursive version)
+#'
+#'Meant to use only for teaching purposes not for replacing the built-in
+#'function \code{factorial()}.
+#'
+#'@param n An integer number
+#'
+#'@details A C++ implementation using recursion.
+#'
+#'@return The factorial of \code{n}
+#'@export
+#'
+#'@examples
+#'    fact_rec_cpp(10);
+fact_rec_cpp <- function(n) {
+    .Call('spsintro_fact_rec_cpp', PACKAGE = 'spsintro', n)
+}
+
 #' Calculate the distance between two observations based on a set of auxiliary
 #' variables
 #'
@@ -241,59 +277,20 @@ bubble_sort <- function(x) {
     .Call('spsintro_bubble_sort', PACKAGE = 'spsintro', x)
 }
 
-#'Calculate the factorial of an integer number
-#'
-#'Meant to use only for teaching purposes not for replacing the built-in
-#'function \code{factorial()}.
-#'
-#'@param n An integer number
-#'
-#'@details A C++ implementation using a \code{for} loop.
-#'
-#'@return The factorial of \code{n}
-#'@export
-#'
-#' @examples
-#'    fact_cpp(10);
-fact_cpp <- function(n) {
-    .Call('spsintro_fact_cpp', PACKAGE = 'spsintro', n)
-}
-
-#'Calculate the factorial of an integer number
-#'
-#'Meant to use only for teaching purposes not for replacing the built-in
-#'function \code{factorial()}.
-#'
-#'@param n An integer number
-#'
-#'@details A C++ implementation using recursion.
-#'
-#'@return The factorial of \code{n}
-#'@export
-#'
-#' @examples
-#'    fact_cpp(10);
-fact_rec_cpp <- function(n) {
-    .Call('spsintro_fact_rec_cpp', PACKAGE = 'spsintro', n)
-}
-
-#'Demonstrate the use of a numeric matrix object from the Rcpp package
-#'
-#'@param x A numeric matrix
-#'
-#'@return A new matrix with the same dimensions as \code{x} filled with zeroes
-#'@export
+#' Example function for demonstrating Rcpp's NumericMatrix class
+#' @param x A numeric matrix
+#' @return A numeric matrix created inside the function. A subset of \code{x}
+#'   is printed on the console
+#' @export
 use_matrix <- function(x) {
     .Call('spsintro_use_matrix', PACKAGE = 'spsintro', x)
 }
 
-#'Demonstrate the use of a list object from the Rcpp package
-#'
-#'@param x A numeric matrix
-#'@param y A numeric vector
-#'
-#'@return A named list containing both \code{x} and \code{y}.
-#'@export
+#' Example function to demonstrate Rcpp's list class
+#' @param x A numeric matrix
+#' @param y A numeric vector
+#' @return A list with \code{x} and \code{y} as its elements
+#' @export
 use_list <- function(x, y) {
     .Call('spsintro_use_list', PACKAGE = 'spsintro', x, y)
 }

@@ -11,7 +11,6 @@
 // [[Rcpp::depends(RcppEigen)]]
 
 
-
 //' A function to calculate fibonacci numbers (implemented in C++)
 //'
 //' @param n The length of the sequence
@@ -43,6 +42,7 @@ std::vector<double> gen_fib_cpp(const int n) {
   }
 }
 
+
 //' Find the maximum from a list of values
 //'
 //' @param x A vector holding a number of values
@@ -56,6 +56,63 @@ double find_max(const std::vector<double> &x) {
   }
   return(temp);
 }
+
+
+//'Calculate the factorial of an integer number (loop version)
+//'
+//'Meant to use only for teaching purposes not for replacing the built-in
+//'function \code{factorial()}.
+//'
+//'@param n An integer number
+//'
+//'@details A C++ implementation using a \code{for} loop.
+//'
+//'@return The factorial of \code{n}
+//'@export
+//'
+//'@examples
+//'    fact_cpp(10);
+// [[Rcpp::export]]
+double fact_cpp(double n){
+  double f = 1;
+  if (n < 0) {
+    Rcpp::stop("No factorial for negative numbers");
+  } else if (n == 0) {
+    return 1;
+  } else {
+    for (int i = 1; i <= n; ++i) {
+      f *= i;
+    }
+    return f;
+  }
+}
+
+
+//'Calculate the factorial of an integer number (recursive version)
+//'
+//'Meant to use only for teaching purposes not for replacing the built-in
+//'function \code{factorial()}.
+//'
+//'@param n An integer number
+//'
+//'@details A C++ implementation using recursion.
+//'
+//'@return The factorial of \code{n}
+//'@export
+//'
+//'@examples
+//'    fact_rec_cpp(10);
+// [[Rcpp::export]]
+double fact_rec_cpp(double n){
+  if (n < 0) {
+    Rcpp::stop("No factorial for negative numbers");
+  } else if (n == 0) {
+    return 1;
+  } else {
+    return n*fact_rec_cpp(n - 1);
+  }
+}
+
 
 //' Calculate the distance between two observations based on a set of auxiliary
 //' variables
@@ -114,6 +171,7 @@ Rcpp::List find_knn(const Eigen::MatrixXd & Y,
                              Rcpp::Named("n_var") = n_var);
 }
 
+
 //' Print C++ data type ranges to the R-console
 //' @return No return values, simply printing to the R-console
 //' @export
@@ -132,6 +190,7 @@ void show_type_ranges() {
   Rcpp::Rcout << "double " << std::numeric_limits<double>::min() << "-" << std::numeric_limits<double>::max() << ", " << sizeof(double) << " bytes" << std::endl;
   Rcpp::Rcout << "long double " << std::numeric_limits<long double>::min() << "-" << std::numeric_limits<long double>::max() << ", " << sizeof(long double) << " bytes" << std::endl;
 }
+
 
 //' Print C++ data type conversions
 //' @return No return values, simply printing to the R-console
@@ -153,6 +212,7 @@ void type_conversions() {
   Rcpp::Rcout << c2 << std::endl;
 }
 
+
 //' Show effect of mixing signed and unsigned types
 //' @return No return values, simply printing to the R-console
 //' @export
@@ -163,6 +223,7 @@ void mix_signed_unsigned() {
   Rcpp::Rcout << "int*int " << a*b << std::endl;
   Rcpp::Rcout << "int*unsigned " << a*bu << std::endl;
 }
+
 
 //' Illustrate scoping rules
 //' @return No return values, simply printing to the R-console
@@ -175,6 +236,7 @@ void illustrate_scope() {
   }
   Rcpp::Rcout << i << " " << sum << std::endl;
 }
+
 
 //' Function to illustrate references
 //' @return No return values, simply printing to the R-console
@@ -193,6 +255,7 @@ void show_references() {
   Rcpp::Rcout << "ii: " << ii << std::endl;
 }
 
+
 //' Function to illustrate pointers
 //' @return No return values, simply printing to the R-console
 //' @export
@@ -206,6 +269,7 @@ void show_pointers() {
   *pd = 0.0;
   Rcpp::Rcout << "*pd = 0.0: " << dval << std::endl;
 }
+
 
 //' Illustrates definition and usage of a simple class with only data members
 //' @param dbh The trees diameter at breast height (double)
@@ -226,6 +290,7 @@ void create_tree_struct(double dbh, double height, int no_stems, std::string spe
   Rcpp::Rcout << sizeof(tree1) << std::endl;
 }
 
+
 //' Convert all characters in a string to upper case
 //' @param str A string
 //' @return The same string as \code{str} but with upper case letters
@@ -237,6 +302,7 @@ std::string to_upper_range_for(std::string str) {
   return str;
 }
 
+
 //' Convert all characters in a string to upper case
 //' @param str A string
 //' @return The same string as \code{str} but with upper case letters
@@ -247,6 +313,7 @@ std::string to_upper_subscript(std::string str) {
     str[index] = toupper(str[index]);
   return str;
 }
+
 
 //' Add elements to a vector
 //' @param n An integer giving the final size of the vector
@@ -260,6 +327,7 @@ std::vector<int> add_elem(int n) {
   return v;
 }
 
+
 //' Sums all elements in a vector
 //' @param v A vector of doubles
 //' @return A double containing the sum of all elements of \code{v}
@@ -272,6 +340,7 @@ double sum_elem(std::vector<double> v) {
   return sum;
 }
 
+
 //' Square vector elements
 //' @param v A vector of doubles
 //' @return A double containing the sum of all elements of \code{v}
@@ -283,6 +352,7 @@ std::vector<double> squ_elem(std::vector<double> v) {
   return v;
 }
 
+
 //' Square vector elements
 //' @param v A vector of doubles
 //' @return A double containing the sum of all elements of \code{v}
@@ -293,6 +363,7 @@ std::vector<double> squ_elem_it(std::vector<double> v) {
     *it *= *it;
   return v;
 }
+
 
 //' Array element access example
 //' @return Nothing is returned, only printing to the console
@@ -310,6 +381,7 @@ void arr_access() {
   Rcpp::Rcout << std::endl;
 }
 
+
 //' Return remainder
 //' @return The remainder of an integer division
 //' @export
@@ -320,6 +392,7 @@ int ret_rem(int a, int b) {
   return a%b;
 }
 
+
 //' Conditional operator
 //' @param x An int
 //' @return Nothing to return, just printing to the console
@@ -329,6 +402,7 @@ void dem_cond(int x) {
   std::string win_loose =  x < 50 ? "win" : "loose";
   Rcpp::Rcout << win_loose << std::endl;
 }
+
 
 //' An if-else example
 //' @param dbh Diameter at breast height in cm
@@ -348,6 +422,7 @@ int dem_if_else(double dbh) {
   return dbh_class;
 }
 
+
 //' Find first negative element in a vector and return its position
 //' @param x A vector of double
 //' @return Index of the first negative value
@@ -365,6 +440,7 @@ int find_first_neg(std::vector<double> x) {
   return idx + 1; // In R indexes begin with 1
 }
 
+
 //' Find first negative element in a vector and return its position
 //' @param x A vector of double
 //' @return Index of the first negative value
@@ -381,6 +457,7 @@ int find_first_neg_for(std::vector<double> x) {
   return idx + 1; // In R indexes begin with 1
 }
 
+
 //' Find first negative element in a vector and return its position
 //' @param x A vector of double
 //' @return Index of the first negative value
@@ -395,6 +472,7 @@ int find_first_neg_rf(std::vector<double> x) {
   }
   return idx + 1; // In R indexes begin with 1
 }
+
 
 //' Find first negative element in a vector and return its position
 //' @param x A vector of double
@@ -412,6 +490,7 @@ unsigned find_first_neg_dw(std::vector<double> x) {
   return idx;
 }
 
+
 //' Demonstrate rounding in C++
 //' R's built-in \code{round()} function shows a
 //' different behaviour than the \code{round()} function of C++
@@ -422,6 +501,7 @@ unsigned find_first_neg_dw(std::vector<double> x) {
 double round_cpp(double x) {
   return round(x);
 }
+
 
 //' Test Polygon class
 //' @return Return nothing
@@ -435,6 +515,7 @@ void use_polygon_class() {
   Rcpp::Rcout << "width " << rect.get_w() << std::endl;
   Rcpp::Rcout << "area: " << rect.area() << std::endl;
 }
+
 
 //' Demonstrates inheritance and dynamic binding
 //' @return Return nothing
@@ -457,6 +538,7 @@ void inheritance() {
   Rcpp::Rcout << "Area tri: " << tri.area() << std::endl;
 }
 
+
 //' Naive implementation of bubble sort algorithm
 //' @param x A numeric vector which values are sorted in increasing order
 //' @return A numeric vector with values sorted in increasing order
@@ -477,4 +559,29 @@ std::vector<double> bubble_sort (std::vector<double> &x) {
 }
 
 
+//' Example function for demonstrating Rcpp's NumericMatrix class
+//' @param x A numeric matrix
+//' @return A numeric matrix created inside the function. A subset of \code{x}
+//'   is printed on the console
+//' @export
+// [[Rcpp::export]]
+Rcpp::NumericMatrix use_matrix(const Rcpp::NumericMatrix &x) {
+  Rcpp::NumericMatrix m1(x);
+  Rcpp::NumericMatrix m2(5, 4);
 
+  Rcpp::Rcout << m1(1, 2) << std::endl;
+
+  return m2;
+}
+
+
+//' Example function to demonstrate Rcpp's list class
+//' @param x A numeric matrix
+//' @param y A numeric vector
+//' @return A list with \code{x} and \code{y} as its elements
+//' @export
+// [[Rcpp::export]]
+Rcpp::List use_list(const Rcpp::NumericMatrix &x, const Rcpp::NumericVector &y) {
+  return Rcpp::List::create(Rcpp::Named("m") = x,
+                            Rcpp::Named("v") = y);
+}

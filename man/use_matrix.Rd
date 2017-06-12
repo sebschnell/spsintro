@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{use_matrix}
 \alias{use_matrix}
-\title{Demonstrate the use of a numeric matrix object from the Rcpp package}
+\title{Example function for demonstrating Rcpp's NumericMatrix class}
 \usage{
 use_matrix(x)
 }
@@ -10,8 +10,9 @@ use_matrix(x)
 \item{x}{A numeric matrix}
 }
 \value{
-A new matrix with the same dimensions as \code{x} filled with zeroes
+A numeric matrix created inside the function. A subset of \code{x}
+  is printed on the console
 }
 \description{
-Demonstrate the use of a numeric matrix object from the Rcpp package
+Example function for demonstrating Rcpp's NumericMatrix class
 }

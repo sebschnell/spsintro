@@ -28,6 +28,28 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// fact_cpp
+double fact_cpp(double n);
+RcppExport SEXP spsintro_fact_cpp(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(fact_cpp(n));
+    return rcpp_result_gen;
+END_RCPP
+}
+// fact_rec_cpp
+double fact_rec_cpp(double n);
+RcppExport SEXP spsintro_fact_rec_cpp(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(fact_rec_cpp(n));
+    return rcpp_result_gen;
+END_RCPP
+}
 // calc_dist
 double calc_dist(const Eigen::VectorXd& x_i, const Eigen::VectorXd& x_j, const Eigen::MatrixXd& M);
 RcppExport SEXP spsintro_calc_dist(SEXP x_iSEXP, SEXP x_jSEXP, SEXP MSEXP) {
@@ -314,28 +336,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// fact_cpp
-double fact_cpp(double n);
-RcppExport SEXP spsintro_fact_cpp(SEXP nSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< double >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(fact_cpp(n));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fact_rec_cpp
-double fact_rec_cpp(double n);
-RcppExport SEXP spsintro_fact_rec_cpp(SEXP nSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< double >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(fact_rec_cpp(n));
-    return rcpp_result_gen;
-END_RCPP
-}
 // use_matrix
 Rcpp::NumericMatrix use_matrix(const Rcpp::NumericMatrix& x);
 RcppExport SEXP spsintro_use_matrix(SEXP xSEXP) {
@@ -375,6 +375,8 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"spsintro_gen_fib_cpp", (DL_FUNC) &spsintro_gen_fib_cpp, 1},
     {"spsintro_find_max", (DL_FUNC) &spsintro_find_max, 1},
+    {"spsintro_fact_cpp", (DL_FUNC) &spsintro_fact_cpp, 1},
+    {"spsintro_fact_rec_cpp", (DL_FUNC) &spsintro_fact_rec_cpp, 1},
     {"spsintro_calc_dist", (DL_FUNC) &spsintro_calc_dist, 3},
     {"spsintro_find_knn", (DL_FUNC) &spsintro_find_knn, 4},
     {"spsintro_show_type_ranges", (DL_FUNC) &spsintro_show_type_ranges, 0},
@@ -402,8 +404,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"spsintro_use_polygon_class", (DL_FUNC) &spsintro_use_polygon_class, 0},
     {"spsintro_inheritance", (DL_FUNC) &spsintro_inheritance, 0},
     {"spsintro_bubble_sort", (DL_FUNC) &spsintro_bubble_sort, 1},
-    {"spsintro_fact_cpp", (DL_FUNC) &spsintro_fact_cpp, 1},
-    {"spsintro_fact_rec_cpp", (DL_FUNC) &spsintro_fact_rec_cpp, 1},
     {"spsintro_use_matrix", (DL_FUNC) &spsintro_use_matrix, 1},
     {"spsintro_use_list", (DL_FUNC) &spsintro_use_list, 2},
     {"spsintro_calc_poly_area", (DL_FUNC) &spsintro_calc_poly_area, 2},
