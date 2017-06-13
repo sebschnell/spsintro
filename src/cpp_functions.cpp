@@ -149,9 +149,9 @@ Rcpp::List find_knn(const Eigen::MatrixXd & Y,
   std::vector<std::pair<double, unsigned> > d;
   d.reserve(Y.rows());
   unsigned idx;
-  for (unsigned i = 0; i < Y.rows(); ++i) {
+  for (int i = 0; i < Y.rows(); ++i) {
     d.clear();
-    for (unsigned j = 0; j < X.rows(); ++j) {
+    for (int j = 0; j < X.rows(); ++j) {
       ++idx;
       if (i != j) {
         d.push_back({calc_dist(Y.row(i), X.row(j), M), (j + 1)});
