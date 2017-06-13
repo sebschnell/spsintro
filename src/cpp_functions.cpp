@@ -251,7 +251,7 @@ void show_references() {
   Rcpp::Rcout << "ref_val = 2: " << i << std::endl;
   int &ref_val2 = ref_val;
   Rcpp::Rcout << "ref_val2: " << ref_val2 << std::endl;
-  int ii = ref_val;
+  int ii = i;
   Rcpp::Rcout << "ii: " << ii << std::endl;
 }
 
