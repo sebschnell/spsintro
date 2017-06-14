@@ -3,8 +3,12 @@
 \docType{package}
 \name{spsintro}
 \alias{spsintro}
+\alias{.onUnload}
 \alias{spsintro-package}
 \title{spsintro}
+\usage{
+.onUnload(libpath)
+}
 \description{
 Code snippets and functions used for 'Introduction to Scientific Programming
 and Simulation' course

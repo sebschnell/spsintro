@@ -7,4 +7,8 @@
 #' @docType package
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib spsintro
-NULL
+
+.onUnload <- function (libpath) {
+  library.dynam.unload("spsintro", libpath)
+}
+

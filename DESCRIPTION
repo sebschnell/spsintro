@@ -3,12 +3,13 @@ Type: Package
 Title: Example code and functions to support the NOVA course 'Introduction to 
   Scientific Programming and Simulation'
 Version: 0.1.0
-Author: Sebastian Schnell
-Maintainer: <Sebastian.Schnell@uni-goettingen.de>
+Authors@R: c(person("Sebastian", "Schnell", role = c("aut", "cre"), email = "Sebastian.Schnell@outlook.de"))
+Author: Sebastian Schnell [aut, cre]
+Maintainer: Sebastian  Schnell <Sebastian.Schnell@outlook.de>
 URL: http://github.com/sebschnell/spsintro
 Description: The package provides code snippets and examples used in the NOVA 
   course 'Introduction ot Scientific Programming and Simulation'.
-License: none
+License: GPLv3
 LazyData: TRUE
 SystemRequirements: C++11
 Imports:
