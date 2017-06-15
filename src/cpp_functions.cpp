@@ -50,7 +50,7 @@ std::vector<double> gen_fib_cpp(const int n) {
 //' @export
 // [[Rcpp::export]]
 double find_max(const std::vector<double> &x) {
-  double temp = 0.0;
+  double temp = -std::numeric_limits<double>::max();
   for (unsigned i = 0; i != x.size(); ++i) {
     if (x[i] > temp) temp = x[i];
   }
